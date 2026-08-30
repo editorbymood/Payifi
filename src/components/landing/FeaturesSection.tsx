@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Bell, ShieldCheck, PieChart, Activity } from 'lucide-react';
-import { StatCounters } from './StatCounters';
 
 const features = [
   {
@@ -37,7 +36,7 @@ const features = [
 export const FeaturesSection: React.FC = () => {
   return (
     <section id="features" className="w-full bg-slate-50 relative flex flex-col justify-center py-32 px-6">
-      <div className="max-w-5xl mx-auto relative z-10 w-full mb-16">
+      <div className="max-w-5xl mx-auto relative z-10 w-full">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight">Everything you need.</h2>
           <p className="text-slate-500 text-lg max-w-2xl mx-auto font-medium">
@@ -72,10 +71,6 @@ export const FeaturesSection: React.FC = () => {
             );
           })}
         </div>
-      </div>
-      
-      <div className="w-full">
-        <StatCounters />
       </div>
     </section>
   );
