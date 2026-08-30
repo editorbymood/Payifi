@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Logo } from '../ui/Logo';
 import { AnimatedThemeToggler } from '../ui/animated-theme-toggler';
 
@@ -9,97 +9,188 @@ const GithubIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   </svg>
 );
 
-const navItems = [
-  { name: 'Features', href: '#features' },
-  { name: 'How It Works', href: '#timeline' },
-  { name: 'FAQ', href: '#faq' },
+const TickingClock: React.FC = () => {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <span className="font-mono text-xs text-emerald-900/50 font-bold uppercase tracking-wider">
+      {time.toLocaleTimeString()}
+    </span>
+  );
+};
+
+const menuItems = [
+  { number: '01', name: 'Features', href: '#features' },
+  { number: '02', name: 'How It Works', href: '#timeline' },
+  { number: '03', name: 'FAQ', href: '#faq' },
+  { number: '04', name: 'Contact Us', href: '#contact' },
+  { number: '05', name: 'Launch Dashboard', href: '/login' },
 ];
 
 export const LandingNavbar: React.FC = () => {
-  const handleContact = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  const handleLinkClick = (href: string) => {
+    setIsOpen(false);
+    if (href.startsWith('#')) {
+      const element = document.getElementById(href.slice(1));
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+      }
+    } else {
+      window.location.href = href;
     }
   };
 
+  const listVariants = {
+    open: {
+      transition: { staggerChildren: 0.08, delayChildren: 0.15 }
+    },
+    closed: {
+      transition: { staggerChildren: 0.05, staggerDirection: -1 }
+    }
+  };
+
+  const itemVariants = {
+    open: { opacity: 1, y: 0, transition: { type: 'spring' as const, stiffness: 100, damping: 15 } },
+    closed: { opacity: 0, y: 40 }
+  };
+
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-8 px-6 pointer-events-none">
-      {/* Outer Metallic Border Layer */}
-      <motion.nav
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-        className="pointer-events-auto w-full max-w-5xl rounded-full p-[3px]"
-        style={{
-          background: "linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(201, 201, 201) 9%, rgb(161, 161, 161) 32%, rgb(117, 117, 117) 73%, rgb(255, 255, 255) 100%)",
-          boxShadow: "0.29px 4.36px 2.18px 0px rgba(0, 0, 0, 0.01), 0.48px 7.24px 3.63px 0px rgba(0, 0, 0, 0.01), 0.78px 11.7px 5.86px 0px rgba(0, 0, 0, 0.02), 1.28px 19.15px 9.6px 0px rgba(0, 0, 0, 0.03), 2.2px 32.97px 16.52px 0px rgba(0, 0, 0, 0.03), 4px 60px 30.07px 0px rgba(0, 0, 0, 0.06)"
-        }}
-      >
-        {/* Inner Liquid Glass Layer */}
-        <div 
-          className="w-full h-full rounded-full flex items-center justify-between px-6 py-2.5 relative overflow-hidden"
-          style={{
-            background: "linear-gradient(150deg, rgb(208, 208, 208) 0%, rgb(232, 232, 232) 50.17%, rgb(200, 200, 200) 100%)",
-            boxShadow: "inset 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07), inset 0px -1px 1.5px 0px rgba(0, 0, 0, 0.07)"
-          }}
+    <>
+      {/* Floating Collapsed Beige Header */}
+      <div className="fixed top-0 left-0 right-0 z-40 flex justify-center pt-8 px-6 pointer-events-none">
+        <motion.nav
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+          className="pointer-events-auto w-full max-w-5xl rounded-full px-6 py-3 flex items-center justify-between bg-[#f5f3ee] border border-emerald-950/10 shadow-lg shadow-emerald-950/5 relative z-50"
         >
-          {/* Subtle noise/texture overlay */}
-          <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
- 
-          {/* Left Logo */}
-          <Logo className="z-10 pl-2" />
+          {/* Left: Logo */}
+          <Logo className="h-9" />
 
-          {/* Center Links */}
-          <div className="hidden md:flex items-center gap-8 z-10">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-sm font-semibold text-slate-800 hover:text-black transition-colors"
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
-
-          {/* Right Buttons */}
-          <div className="flex items-center gap-4 z-10">
-            {/* GitHub icon repository link */}
+          {/* Right: Actions and Fullscreen Trigger */}
+          <div className="flex items-center gap-3">
+            {/* GitHub */}
             <a
               href="https://github.com/editorbymood/Payifi"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full hover:bg-black/5 text-slate-800 hover:text-black transition-colors flex items-center justify-center"
+              className="p-2.5 rounded-full hover:bg-black/5 text-emerald-950/80 hover:text-emerald-950 transition-colors flex items-center justify-center"
               aria-label="GitHub Repository"
             >
               <GithubIcon className="w-5 h-5" />
             </a>
 
-            {/* Dark Mode toggle switcher */}
-            <div className="text-slate-800 hover:text-black transition-colors">
+            {/* Dark Mode toggle */}
+            <div className="text-emerald-950/80 hover:text-emerald-950 transition-colors flex items-center">
               <AnimatedThemeToggler variant="star" duration={400} />
             </div>
 
-            <a
-              href="/login"
-              className="hidden sm:block text-sm font-semibold text-slate-800 hover:text-black px-2 py-2 transition-colors"
-            >
-              Sign in
-            </a>
+            {/* Menu Button Trigger */}
             <button
-              onClick={handleContact}
-              className="px-6 py-2.5 rounded-full font-bold text-sm text-white transition-all shadow-[0_4px_12px_rgba(0,0,0,0.15)] hover:shadow-[0_6px_16px_rgba(0,0,0,0.25)] hover:scale-[1.02] active:scale-[0.98]"
-              style={{
-                background: "linear-gradient(135deg, rgb(14, 14, 18) 0%, rgb(45, 45, 55) 100%)",
-                border: "1px solid rgba(255, 255, 255, 0.15)"
-              }}
+              onClick={toggleMenu}
+              className="flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-emerald-950/20 bg-white/50 text-emerald-950 font-bold uppercase tracking-wider text-xs hover:bg-white transition-colors focus:outline-none z-50 cursor-pointer"
             >
-              Contact
+              <span>{isOpen ? 'Close' : 'Menu'}</span>
+              <div className="w-4 h-3 relative flex flex-col justify-between items-center">
+                <motion.span
+                  animate={{ rotate: isOpen ? 45 : 0, y: isOpen ? 5 : 0 }}
+                  transition={{ type: 'spring', stiffness: 250, damping: 20 }}
+                  className="w-4 h-0.5 bg-emerald-950 rounded"
+                />
+                <motion.span
+                  animate={{ rotate: isOpen ? -45 : 0, y: isOpen ? -5 : 0 }}
+                  transition={{ type: 'spring', stiffness: 250, damping: 20 }}
+                  className="w-4 h-0.5 bg-emerald-950 rounded"
+                />
+              </div>
             </button>
           </div>
-        </div>
-      </motion.nav>
-    </div>
+        </motion.nav>
+      </div>
+
+      {/* Fullscreen Overlay Menu in Beige (#f5f3ee) */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ y: '-100%' }}
+            animate={{ y: 0 }}
+            exit={{ y: '-100%' }}
+            transition={{ type: 'spring', damping: 28, stiffness: 180 }}
+            className="fixed inset-0 w-full h-screen bg-[#f5f3ee] z-30 flex flex-col justify-between pt-36 pb-12 px-8 md:px-16 overflow-y-auto"
+          >
+            {/* Background Texture Overlay */}
+            <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }} />
+
+            {/* Content Body */}
+            <div className="max-w-4xl mx-auto w-full z-10 flex-1 flex flex-col justify-center">
+              <motion.ul 
+                variants={listVariants}
+                animate="open"
+                initial="closed"
+                exit="closed"
+                className="flex flex-col gap-4 md:gap-6"
+              >
+                {menuItems.map((item) => (
+                  <motion.li 
+                    key={item.name} 
+                    variants={itemVariants}
+                    className="overflow-hidden"
+                  >
+                    <button
+                      onClick={() => handleLinkClick(item.href)}
+                      className="group flex items-baseline gap-4 md:gap-6 text-left focus:outline-none"
+                    >
+                      <span className="font-mono text-emerald-800/40 text-sm md:text-base font-bold">
+                        {item.number}
+                      </span>
+                      <span className="text-4xl md:text-6xl font-black text-emerald-950 tracking-tighter group-hover:translate-x-3 transition-transform duration-300 group-hover:text-emerald-600">
+                        {item.name}
+                      </span>
+                    </button>
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </div>
+
+            {/* Bottom Meta Row */}
+            <div className="max-w-4xl mx-auto w-full border-t border-emerald-950/10 pt-8 z-10 flex flex-col md:flex-row justify-between items-center gap-6">
+              {/* Email & Info */}
+              <div className="flex flex-col gap-1 items-center md:items-start">
+                <span className="text-[10px] uppercase font-bold text-emerald-900/40 tracking-wider">Get in Touch</span>
+                <a href="mailto:hello@payifi.app" className="text-emerald-950 font-bold hover:text-emerald-600 transition-colors text-sm">
+                  hello@payifi.app
+                </a>
+              </div>
+
+              {/* Socials & GitHub */}
+              <div className="flex items-center gap-5 text-sm font-bold text-emerald-900/60">
+                <a href="https://github.com/editorbymood/Payifi" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-950 transition-colors">GitHub</a>
+                <span>&bull;</span>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-950 transition-colors">Twitter</a>
+                <span>&bull;</span>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-950 transition-colors">Instagram</a>
+              </div>
+
+              {/* Clock */}
+              <div className="flex flex-col items-center md:items-end gap-1">
+                <span className="text-[10px] uppercase font-bold text-emerald-900/40 tracking-wider">Local Time</span>
+                <TickingClock />
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
