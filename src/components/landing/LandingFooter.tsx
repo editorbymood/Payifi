@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Logo } from '../ui/Logo';
+import { LightStreaks } from '../ui/LightStreaks';
 
 interface LandingFooterProps {
   onNavigateTerms?: () => void;
@@ -13,11 +14,26 @@ export const LandingFooter: React.FC<LandingFooterProps> = ({ onNavigateTerms, o
   };
 
   return (
-    <footer className="w-full relative px-4 md:px-8 pb-8 pt-24 bg-slate-50">
+    <footer className="w-full relative px-4 md:px-8 pb-8 pt-24 bg-slate-50 overflow-hidden">
       
+      {/* Light Streaks WebGL background covering the entire footer area */}
+      <div className="absolute inset-0 z-0">
+        <LightStreaks
+          colorBg="#f8fafc" // matches the slate-50 footer background
+          colorGlow="#34d399" // emerald glow matching the brand
+          colorCore="#ffffff" // white core
+          speed={2}
+          intensity={3.5}
+          thickness={4}
+          thicknessSpeed={1.5}
+          streamCount={5}
+          direction="down"
+        />
+      </div>
+
       {/* Outer Metallic Border Layer (matches Framer outer div) */}
       <div 
-        className="w-full max-w-7xl mx-auto rounded-[40px] relative p-[3px]"
+        className="w-full max-w-7xl mx-auto rounded-[40px] relative p-[3px] z-10"
         style={{
           background: "linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(201, 201, 201) 9%, rgb(161, 161, 161) 32%, rgb(117, 117, 117) 73%, rgb(255, 255, 255) 100%)",
           boxShadow: "0.29px 4.36px 2.18px 0px rgba(0, 0, 0, 0.01), 0.48px 7.24px 3.63px 0px rgba(0, 0, 0, 0.01), 0.78px 11.7px 5.86px 0px rgba(0, 0, 0, 0.02), 1.28px 19.15px 9.6px 0px rgba(0, 0, 0, 0.03), 2.2px 32.97px 16.52px 0px rgba(0, 0, 0, 0.03), 4px 60px 30.07px 0px rgba(0, 0, 0, 0.06)"
@@ -119,7 +135,7 @@ export const LandingFooter: React.FC<LandingFooterProps> = ({ onNavigateTerms, o
       </div>
 
       {/* Oversized Wordmark - Edge to Edge, Outside the Card */}
-      <div className="w-full flex items-end justify-center leading-none select-none pointer-events-none mt-12 overflow-visible">
+      <div className="w-full flex items-end justify-center leading-none select-none pointer-events-none mt-12 overflow-visible relative z-10">
         <motion.h1 
           initial={{ y: '20%', opacity: 0 }}
           whileInView={{ y: '0%', opacity: 1 }}
