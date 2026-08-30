@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { InteractiveGhost } from '../ui/InteractiveGhost';
-import { Ghost, ShieldAlert, Sparkles, UserMinus } from 'lucide-react';
+import { Ghost, ShieldAlert } from 'lucide-react';
 
 const ghostQuotes = [
   "Did you forget about me? 💸",

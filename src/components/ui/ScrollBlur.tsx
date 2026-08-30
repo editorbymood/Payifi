@@ -20,7 +20,7 @@ export const ScrollBlur: React.FC<ScrollBlurProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const sb = useMotionValue(0); // 0..1 blur strength
   const active = useRef(false); // currently scrolling?
-  const idle = useRef<NodeJS.Timeout | null>(null);
+  const idle = useRef<ReturnType<typeof setTimeout> | null>(null);
   const controls = useRef<any>(null);
 
   useIsoLayoutEffect(() => {

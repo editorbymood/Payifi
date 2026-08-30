@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Star, Cloud, Database, Globe, MessageSquare, Zap, Search, Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import { Zap, Play, Pause, Volume2, VolumeX } from 'lucide-react';
 import { CatalogMarquee } from './CatalogMarquee';
 
 export const HeroSection: React.FC = () => {

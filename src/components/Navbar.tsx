@@ -1,5 +1,5 @@
 import React from 'react';
-import { CreditCard, Plus, LayoutDashboard, PieChart, Settings, LogOut, ShieldCheck, Sparkles } from 'lucide-react';
+import { Plus, LayoutDashboard, PieChart, Settings, LogOut, ShieldCheck, Sparkles } from 'lucide-react';
 import type { AppUser } from '../firebase/auth';
 import { formatCurrency } from '../utils/calculations';
 import { Logo } from './ui/Logo';
