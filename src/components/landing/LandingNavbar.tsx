@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Logo } from '../ui/Logo';
-import { AnimatedThemeToggler } from '../ui/animated-theme-toggler';
+
 
 const GithubIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -91,10 +91,7 @@ export const LandingNavbar: React.FC = () => {
               <GithubIcon className="w-5 h-5" />
             </a>
 
-            {/* Dark Mode toggle */}
-            <div className="text-emerald-950/80 hover:text-emerald-950 transition-colors flex items-center">
-              <AnimatedThemeToggler variant="star" duration={400} />
-            </div>
+
 
             {/* Menu Button Trigger */}
             <button
