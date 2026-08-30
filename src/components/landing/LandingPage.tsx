@@ -6,6 +6,7 @@ import { StatCounters } from './StatCounters';
 import { WorkflowBeam } from './WorkflowBeam';
 import { TimelineSection } from './TimelineSection';
 import { FeatureWalkthrough } from './FeatureWalkthrough';
+import { GhostSection } from './GhostSection';
 import { FeaturesSection } from './FeaturesSection';
 import { FaqSection } from './FaqSection';
 import { ContactSection } from './ContactSection';
@@ -44,6 +45,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigateTerms, onNav
 
         <TimelineSection />
         <FeatureWalkthrough />
+        <GhostSection />
         <FeaturesSection />
         <FaqSection />
         <ContactSection />
