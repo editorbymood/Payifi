@@ -146,7 +146,7 @@ const FS = `
 
         gl_FragColor = vec4(clamp(color, 0.0, 1.0), finalAlpha);
     }
-\`;
+`;
 
 export const LightStreaks: React.FC<LightStreaksProps> = ({
   colorBg = '#0A0A12',
