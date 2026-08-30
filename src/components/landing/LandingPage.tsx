@@ -1,5 +1,6 @@
 import React from 'react';
 import { LandingNavbar } from './LandingNavbar';
+import { ScrollBlur } from '../ui/ScrollBlur';
 import { HeroSection } from './HeroSection';
 import { StatCounters } from './StatCounters';
 import { WorkflowBeam } from './WorkflowBeam';
@@ -20,6 +21,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigateTerms, onNav
     <div className="min-h-screen w-full bg-background font-sans selection:bg-brand-500 selection:text-white relative">
       <div className="noise-bg" />
       <div className="relative z-10">
+        <ScrollBlur direction="top" height="130px" />
         <LandingNavbar />
 
         <HeroSection />
