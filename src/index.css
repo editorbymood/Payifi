@@ -6,55 +6,55 @@
   :root {
     color-scheme: light;
     
-    /* Clean Light Mode (White Base) */
-    --background: #fdfbf7;
-    --foreground: #09090b;
+    /* Premium Mint/Sage Green Light Base */
+    --background: #f1f8f5; 
+    --foreground: #072a18; 
     
-    --surface-50: #ffffff;
-    --surface-100: #f4f4f5;
-    --surface-200: #e4e4e7;
-    --surface-300: #d4d4d8;
-    --surface-400: #a1a1aa;
+    --surface-50: rgba(255, 255, 255, 0.5);
+    --surface-100: rgba(255, 255, 255, 0.85);
+    --surface-200: #d1fae5;
+    --surface-300: #a7f3d0;
+    --surface-400: #34d399;
     
-    /* Brand Colors (Keeping orange accents but adapted for white background) */
-    --brand-50: #fff7ed;
-    --brand-100: #ffedd5;
-    --brand-200: #fed7aa;
-    --brand-300: #fdba74;
-    --brand-400: #fb923c;
-    --brand-500: #f97316;
-    --brand-600: #ea580c;
-    --brand-700: #c2410c;
-    --brand-800: #9a3412;
-    --brand-900: #7c2d12;
+    /* Brand Colors (Emerald/Mint Green) */
+    --brand-50: #ecfdf5;
+    --brand-100: #d1fae5;
+    --brand-200: #a7f3d0;
+    --brand-300: #6ee7b7;
+    --brand-400: #34d399;
+    --brand-500: #10b981;
+    --brand-600: #059669;
+    --brand-700: #047857;
+    --brand-800: #065f46;
+    --brand-900: #064e3b;
     
-    --glow-color: rgba(249, 115, 22, 0.15);
+    --glow-color: rgba(16, 185, 129, 0.15);
   }
 
   .dark {
-    /* Kept for dashboard compatibility if needed, but landing is light */
+    /* Kept for dashboard compatibility if needed, but adjusted to emerald theme */
     color-scheme: dark;
-    --background: #09090b;
-    --foreground: #fafafa;
+    --background: #020c08;
+    --foreground: #ecfdf5;
     
-    --surface-50: #18181b;
-    --surface-100: #27272a;
-    --surface-200: #3f3f46;
-    --surface-300: #52525b;
-    --surface-400: #71717a;
+    --surface-50: #041a12;
+    --surface-100: #062419;
+    --surface-200: #0b3726;
+    --surface-300: #0e4b34;
+    --surface-400: #10b981;
     
-    --brand-50: #fff7ed;
-    --brand-100: #ffedd5;
-    --brand-200: #fed7aa;
-    --brand-300: #fdba74;
-    --brand-400: #fb923c;
-    --brand-500: #f97316;
-    --brand-600: #ea580c;
-    --brand-700: #c2410c;
-    --brand-800: #9a3412;
-    --brand-900: #7c2d12;
+    --brand-50: #ecfdf5;
+    --brand-100: #d1fae5;
+    --brand-200: #a7f3d0;
+    --brand-300: #6ee7b7;
+    --brand-400: #34d399;
+    --brand-500: #10b981;
+    --brand-600: #059669;
+    --brand-700: #047857;
+    --brand-800: #065f46;
+    --brand-900: #064e3b;
     
-    --glow-color: rgba(249, 115, 22, 0.4);
+    --glow-color: rgba(16, 185, 129, 0.4);
   }
   
   body {

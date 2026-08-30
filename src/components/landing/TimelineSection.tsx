@@ -44,15 +44,13 @@ export const TimelineSection: React.FC = () => {
   const lineHeight = useTransform(scrollYProgress, [0.2, 0.8], ['0%', '100%']);
 
   return (
-    <section ref={containerRef} id="how-it-works" className="w-full relative bg-white flex flex-col justify-center py-32 px-6">
+    <section ref={containerRef} id="how-it-works" className="w-full relative bg-transparent flex flex-col justify-center py-32 px-6">
       <div className="max-w-4xl mx-auto relative z-10 w-full">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight">The ultimate workflow.</h2>
           <p className="text-slate-500 text-lg max-w-2xl mx-auto font-medium mb-12">
             Connect all your accounts and services in one place. Payifi instantly organizes the chaos into absolute clarity.
           </p>
-
-          <WorkflowBeam />
         </div>
 
         <div className="relative">

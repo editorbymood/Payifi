@@ -35,11 +35,11 @@ const features = [
 
 export const FeaturesSection: React.FC = () => {
   return (
-    <section id="features" className="w-full bg-slate-50 relative flex flex-col justify-center py-32 px-6">
+    <section id="features" className="w-full bg-transparent relative flex flex-col justify-center py-32 px-6">
       <div className="max-w-5xl mx-auto relative z-10 w-full">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight">Everything you need.</h2>
-          <p className="text-slate-500 text-lg max-w-2xl mx-auto font-medium">
+          <h2 className="text-4xl md:text-5xl font-bold text-emerald-950 mb-6 tracking-tight">Everything you need.</h2>
+          <p className="text-emerald-800/80 text-lg max-w-2xl mx-auto font-medium">
             A professional suite of tools designed to give you absolute clarity over your recurring spend.
           </p>
         </div>
@@ -54,16 +54,16 @@ export const FeaturesSection: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: feature.delay }}
-                className={`relative group overflow-hidden rounded-3xl bg-white border border-slate-200 p-8 shadow-sm hover:shadow-md transition-shadow ${feature.colSpan}`}
+                className={`relative group overflow-hidden rounded-3xl bg-white/50 backdrop-blur-md border border-emerald-100/60 p-8 shadow-sm hover:shadow-md hover:bg-white/70 hover:border-emerald-200 transition-all duration-300 ${feature.colSpan}`}
               >
                 <div className="relative z-10">
-                  <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="w-6 h-6 text-black" />
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-50/50 border border-emerald-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Icon className="w-6 h-6 text-emerald-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-black mb-3">
+                  <h3 className="text-xl font-bold text-emerald-950 mb-3">
                     {feature.title}
                   </h3>
-                  <p className="text-slate-600 leading-relaxed text-sm">
+                  <p className="text-emerald-800/80 leading-relaxed text-sm">
                     {feature.description}
                   </p>
                 </div>

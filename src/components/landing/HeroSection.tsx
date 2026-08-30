@@ -32,7 +32,7 @@ export const HeroSection: React.FC = () => {
   };
 
   return (
-    <section className="min-h-screen w-full relative flex flex-col justify-center overflow-hidden bg-white pt-32 pb-20">
+    <section className="min-h-screen w-full relative flex flex-col justify-center overflow-hidden bg-transparent pt-32 pb-20">
       
       {/* Concentric Circles Background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-[1200px] pointer-events-none z-0 flex items-center justify-center">
@@ -162,7 +162,7 @@ export const HeroSection: React.FC = () => {
 
       </div>
 
-      <div className="w-full pb-8 z-10 bg-white pt-24 relative">
+      <div className="w-full pb-8 z-10 bg-transparent pt-24 relative">
         <div className="text-center mb-6 text-xs font-semibold text-slate-400 uppercase tracking-wider">
           Trusted by 200,000+ users worldwide
         </div>

@@ -33,11 +33,11 @@ export const FaqSection: React.FC = () => {
   };
 
   return (
-    <section id="faq" className="w-full relative bg-slate-50 flex flex-col justify-center py-32 px-6">
+    <section id="faq" className="w-full relative bg-transparent flex flex-col justify-center py-32 px-6">
       <div className="max-w-3xl mx-auto w-full z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-black tracking-tight mb-6">Answers, briefly.</h2>
-          <p className="text-slate-500 text-lg font-medium">Everything you need to know about how Payifi works.</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-emerald-950 tracking-tight mb-6">Answers, briefly.</h2>
+          <p className="text-emerald-800/80 text-lg font-medium">Everything you need to know about how Payifi works.</p>
         </div>
 
         <div className="space-y-4 pb-12">
@@ -48,17 +48,17 @@ export const FaqSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className={`border rounded-2xl overflow-hidden transition-all duration-300 ${openIndex === i ? 'bg-white border-slate-300 shadow-md' : 'bg-white border-slate-200 hover:border-slate-300 shadow-sm'}`}
+              className={`border rounded-2xl overflow-hidden transition-all duration-300 backdrop-blur-md ${openIndex === i ? 'bg-white/80 border-emerald-300 shadow-md shadow-emerald-500/5' : 'bg-white/40 border-emerald-100/60 hover:border-emerald-200 hover:bg-white/60 shadow-sm'}`}
             >
               <button
                 onClick={() => toggleOpen(i)}
                 className="w-full px-6 py-5 md:px-8 md:py-6 flex items-center justify-between text-left focus:outline-none group"
               >
-                <span className={`font-bold text-base md:text-lg transition-colors ${openIndex === i ? 'text-black' : 'text-black'}`}>{faq.question}</span>
+                <span className={`font-bold text-base md:text-lg transition-colors ${openIndex === i ? 'text-emerald-950' : 'text-emerald-950/80 group-hover:text-emerald-950'}`}>{faq.question}</span>
                 <motion.div 
                   animate={{ rotate: openIndex === i ? 180 : 0 }}
                   transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-                  className={`shrink-0 ml-4 flex items-center justify-center w-8 h-8 rounded-full ${openIndex === i ? 'bg-slate-100 text-black' : 'bg-slate-50 text-slate-500 group-hover:bg-slate-100 group-hover:text-black'}`}
+                  className={`shrink-0 ml-4 flex items-center justify-center w-8 h-8 rounded-full ${openIndex === i ? 'bg-emerald-100 text-emerald-900' : 'bg-emerald-50/50 text-emerald-700 group-hover:bg-emerald-100 group-hover:text-emerald-900'}`}
                 >
                   {openIndex === i ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                 </motion.div>
@@ -70,9 +70,9 @@ export const FaqSection: React.FC = () => {
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ type: 'spring', stiffness: 200, damping: 25 }}
-                    className="px-6 pb-5 md:px-8 md:pb-6 text-slate-600 leading-relaxed text-sm md:text-lg"
+                    className="px-6 pb-5 md:px-8 md:pb-6 text-emerald-900/80 leading-relaxed text-sm md:text-lg"
                   >
-                    <div className="pt-2 border-t border-slate-100">
+                    <div className="pt-2 border-t border-emerald-100/50">
                       {faq.answer}
                     </div>
                   </motion.div>

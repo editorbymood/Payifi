@@ -14,23 +14,8 @@ export const LandingFooter: React.FC<LandingFooterProps> = ({ onNavigateTerms, o
   };
 
   return (
-    <footer className="w-full relative px-4 md:px-8 pb-8 pt-24 bg-slate-50 overflow-hidden">
+    <footer className="w-full relative px-4 md:px-8 pb-8 pt-24 bg-transparent overflow-hidden">
       
-      {/* Light Streaks WebGL background covering the entire footer area */}
-      <div className="absolute inset-0 z-0">
-        <LightStreaks
-          colorBg="#f8fafc" // matches the slate-50 footer background
-          colorGlow="#34d399" // emerald glow matching the brand
-          colorCore="#ffffff" // white core
-          speed={2}
-          intensity={3.5}
-          thickness={4}
-          thicknessSpeed={1.5}
-          streamCount={5}
-          direction="down"
-        />
-      </div>
-
       {/* Outer Metallic Border Layer (matches Framer outer div) */}
       <div 
         className="w-full max-w-7xl mx-auto rounded-[40px] relative p-[3px] z-10"
