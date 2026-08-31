@@ -61,6 +61,19 @@
     background-color: var(--background);
     color: var(--foreground);
     overflow-x: hidden;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    pointer-events: none;
+    background-image: 
+      linear-gradient(to right, rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 
   /* Custom scrollbars */
